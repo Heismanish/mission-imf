@@ -13,11 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  agent
+  admin
+}
+
 model User {
   id       String @id @default(uuid())
   username String @unique
   password String
-  role     String @default("agent")
+  role     Role   @default(agent)
 }
 
 model Gadgets {
