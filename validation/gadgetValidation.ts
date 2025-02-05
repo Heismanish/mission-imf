@@ -14,3 +14,10 @@ export const gadgetStatusSchema = z.enum([
   "DESTROYED",
   "DECOMMISSIONED",
 ]);
+
+export const updateGadgetSchema = z.object({
+  name: z.string().min(1, "Name cannot be empty").optional(),
+  status: z
+    .enum(["AVAILABLE", "DEPLOYED", "DESTROYED", "DECOMMISSIONED"])
+    .optional(),
+});

@@ -6,7 +6,12 @@ export const generateCodename = async (): Promise<string> => {
   let isUnique = false;
 
   while (!isUnique) {
-    codename = `The ${faker.word.adjective()} ${faker.animal.type()}`;
+    const partOne = faker.word.adjective();
+    const partTwo = faker.animal.type();
+
+    const finalOne = partOne.charAt(0).toUpperCase() + partOne.slice(1);
+    const finalTwo = partTwo.charAt(0).toUpperCase() + partTwo.slice(1);
+    codename = `The ${finalOne} ${finalTwo}`;
 
     const exists = await prisma.gadgets.findFirst({
       where: { codename: codename },
