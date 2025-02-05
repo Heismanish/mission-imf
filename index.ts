@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.route.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import gadgetsRoutes from "./routes/gadgets.route.js";
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/gadgets", gadgetsRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello agents!! ");

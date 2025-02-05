@@ -27,7 +27,7 @@ export const protectRoute = async (
   next: NextFunction
 ) => {
   try {
-    const id = req.cookies?.jwt;
+    const id = req.cookies?.imfAgent;
 
     if (!id) {
       res.status(401).json({ error: "Unauthorized - No token found" });
